@@ -1,0 +1,5 @@
+query GetTopics($afterMinutes: Int) {
+  topics(afterMinutes: $afterMinutes) {
+    ...Topic
+  }
+}

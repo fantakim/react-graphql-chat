@@ -1,0 +1,27 @@
+mutation LikeMessage($channelId: ID!, $messageId: ID!) {
+  likeMessage(input: { channelId: $channelId, messageId: $messageId }) {
+    messageProcessingPayload {
+      action
+      message {
+        id
+        likes
+      }
+    }
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on ResourceNotFoundError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}

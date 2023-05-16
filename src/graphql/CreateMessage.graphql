@@ -1,0 +1,26 @@
+mutation CreateMessage($channelId: ID!, $content: String!) {
+  createMessage(input: { channelId: $channelId, content: $content }) {
+    messageProcessingPayload {
+      action
+      message {
+        id
+      }
+    }
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on ResourceNotFoundError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}

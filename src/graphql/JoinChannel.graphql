@@ -1,0 +1,23 @@
+mutation JoinChannel($topicId: String!) {
+  joinChannel(input: { topicId: $topicId }) {
+    channel {
+      id
+    }
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on ResourceNotFoundError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}

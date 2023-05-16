@@ -1,0 +1,27 @@
+mutation AuthenticateUser($email: String!, $code: String!) {
+  authenticateUser(input: { email: $email, code: $code }) {
+    user {
+      ...User
+    }
+    accessToken
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on FailedLoginError {
+        message
+      }
+      ... on ResourceNotFoundError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}

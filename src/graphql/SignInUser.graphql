@@ -1,0 +1,21 @@
+mutation SignInUser($email: String!) {
+  signInUser(input: { email: $email }) {
+    email
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on ResourceNotFoundError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}

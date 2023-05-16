@@ -1,0 +1,27 @@
+mutation SignUpUser($nickName: String!, $email: String!) {
+  signUpUser(input: { nickName: $nickName, email: $email }) {
+    user {
+      ...User
+    }
+    accessToken
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on DuplicateEmailError {
+        message
+      }
+      ... on DuplicateNickNameError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}

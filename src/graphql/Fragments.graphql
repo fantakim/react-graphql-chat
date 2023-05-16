@@ -1,0 +1,39 @@
+fragment User on User {
+  id
+  email
+  nickName
+  role
+  avatarUrl
+}
+
+fragment Channel on Channel {
+  id
+  name
+  createdOn
+  active
+  messages(take: 50) {
+    ...Message
+  }
+}
+
+fragment Message on Message {
+  id
+  content
+  displayName
+  isCurrentUser
+  timestamp
+  timestampAgo
+  likes
+  liked
+  avatarUrl(targetSize: 100)
+}
+
+fragment Topic on Topic {
+  id
+  title
+  description
+  start
+  end
+  active
+  progress
+}

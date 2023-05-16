@@ -1,0 +1,8 @@
+subscription OnMessageProcessing($channelId: ID!) {
+  onMessageProcessing(channelId: $channelId) {
+    action
+    message {
+      ...Message
+    }
+  }
+}

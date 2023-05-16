@@ -1,0 +1,7 @@
+query GetMessages($channelId: ID!) {
+  messages(channelId: $channelId) {
+    nodes {
+      ...Message
+    }
+  }
+}

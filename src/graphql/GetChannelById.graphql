@@ -1,0 +1,10 @@
+query GetChannelById($channelId: ID!) {
+  channelById(id: $channelId) {
+    id
+    name
+    createdOn
+    messages {
+      ...Message
+    }
+  }
+}

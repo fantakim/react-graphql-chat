@@ -1,0 +1,7 @@
+subscription OnTopicProcessing {
+  onTopicProcessing {
+    topics {
+      ...Topic
+    }
+  }
+}

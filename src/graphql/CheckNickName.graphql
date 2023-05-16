@@ -1,0 +1,6 @@
+query CheckNickName($nickName: String!) {
+  checkNickName(nickName: $nickName) {
+    isDuplicate
+    suggestions
+  }
+}

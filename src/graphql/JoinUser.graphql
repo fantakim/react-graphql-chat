@@ -1,0 +1,24 @@
+mutation JoinUser($nickName: String!) {
+  joinUser(input: { nickName: $nickName }) {
+    user {
+      ...User
+    }
+    accessToken
+    errors {
+      code: __typename
+      ... on Error {
+        message
+      }
+      ... on DuplicateNickNameError {
+        message
+      }
+      ... on ValidationError {
+        message
+        errors {
+          propertyName
+          errorMessage
+        }
+      }
+    }
+  }
+}
